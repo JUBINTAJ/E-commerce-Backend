@@ -1,6 +1,6 @@
-import asyncHandler from "../middlewares/asyncHandler";
-import { userRegister ,loginUser } from "../service/userService";
-import { STATUS } from "../utils/constant";
+import asyncHandler from "../middlewares/asyncHandler.js";
+import { userRegister ,loginUser } from "../service/userService.js";
+import { STATUS } from "../utils/constant.js";
 
 
 
@@ -19,7 +19,7 @@ export const regiseterUser=asyncHandler(async(req,res)=>{
 })
 
 
-export const loginUser=asyncHandler(async(req,res)=>{
+export const userLogin=asyncHandler(async(req,res)=>{
     const {email,password}=req.body;
     const user=await loginUser(email,password)
 

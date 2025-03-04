@@ -1,16 +1,15 @@
 import bcrypt from 'bcrypt'
-import User from '../model/userModels'
-import CustomError from '../utils/customError'
+import User from '../model/userModels.js'
+import CustomError from '../utils/customError.js'
 
 export const userRegister=async(data)=>{
-    const {name,username,email,password}=data
+    const {username,email,password}=data
     const userExists=await User.findOne({email})
     if(userExists){
         throw new CustomError("user already exists",400)
     }
     const hashedpassword=await bcrypt.hash(password,8)
     const newuser=new User({
-        name,
         username,
         email,
         password:hashedpassword
