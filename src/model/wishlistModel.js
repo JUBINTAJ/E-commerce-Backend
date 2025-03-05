@@ -1,4 +1,4 @@
-import { required } from "joi";
+import Joi from "joi";
 import mongoose from "mongoose";
 
 const wishlistSchema=new mongoose.Schema({
@@ -9,7 +9,7 @@ const wishlistSchema=new mongoose.Schema({
     },
     wishlist:[
         {
-            type:mongoose.type.ObjectId,
+            type:mongoose.Types.ObjectId,
             ref:'product'
         }
     ]

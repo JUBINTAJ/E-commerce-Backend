@@ -1,5 +1,5 @@
-import CustomError from "../utils/customError"
-import asyncHandler from "./asyncHandler"
+import CustomError from "../utils/customError.js"
+import asyncHandler from "./asyncHandler.js"
 
 
 const isAdmin=asyncHandler((req,res,next)=>{

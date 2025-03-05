@@ -1,3 +1,5 @@
+import Joi from "joi";
+
 export const productValidation=Joi.object({
     _id:Joi.string().optional(),
     name:Joi.string().min(3).max(50).required(),

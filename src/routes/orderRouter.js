@@ -1,5 +1,5 @@
-import { addOrder, showOrder } from "../controllers/orderController"
-import authenticate from "../middlewares/authMiddleware"
+import { addOrder, showOrder } from "../controllers/orderController.js"
+import authenticate from "../middlewares/authMiddleware.js"
 
 const router=expression.Router()
 

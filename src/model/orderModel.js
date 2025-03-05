@@ -19,17 +19,17 @@ const orderSchema=new mongoose.Schema({
             }
         }
     ],
-    data:{
-        type:Data,
-        default:Data.now,
+    date:{
+        type:Date,
+        default:Date.now,
         required:true
     },
     name:{
-        type:string,
+        type:String,
         required:true
     },
     paymentMethod:{
-        type:string,
+        type:String,
         required:true
     },
     total:{
@@ -43,5 +43,5 @@ const orderSchema=new mongoose.Schema({
 })
 
 
-const Order=mongoose.Model('order',orderSchema)
-export default Order;
+const Order=mongoose.model('order',orderSchema)
+export default Order; 

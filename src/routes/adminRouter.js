@@ -1,6 +1,6 @@
 import express from 'express'
-import isAdmin from '../Middlewares/isAdmin.js'
-import { allUser, orderDetails, Profit, singleUser, totalProductsPurchased, userBlock, userCount } from '../controllers/adminController.js'
+import isAdmin from '../middlewares/isAdminMiddleware.js'
+import { allUser, orderDetails, Profit, singleUser, totalProductsPurchased, userBlock, userCount } from '../controllers/adminControllers.js'
 import authenticate from '../middlewares/authMiddleware.js'
 
 const  router=express.Router()

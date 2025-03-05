@@ -1,7 +1,7 @@
 import Cart from "../model/cartModel.js"
 import Order from "../model/orderModel.js"
 import product from  '../model/productModels.js'
-import CustomError from "../utils/customError"
+import CustomError from "../utils/customError.js"
 
 export const addOrderService=async(name,HostAddress,payment,userId)=>{
        const cart=await Cart.findOne({user:userId})

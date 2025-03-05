@@ -1,5 +1,5 @@
-import { addToWishlist, getAllWishlist, removeSingleWishlist } from "../controllers/wishlistController";
-import authenticate from "../middlewares/authMiddleware";
+import { addToWishlist, getAllWishlist, removeSingleWishlist } from "../controllers/wishlistController.js";
+import authenticate from "../middlewares/authMiddleware.js";
 import express from 'express'
 
 

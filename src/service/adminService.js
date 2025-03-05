@@ -1,6 +1,6 @@
-import User from "../models/userModels.js";
+import User from "../model/userModels.js";
 import CustomError from '../utils/customError.js'
-import Order from '../models/orderModel.js'
+import Order from '../model/orderModel.js'
 
 
 

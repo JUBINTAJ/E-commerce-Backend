@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
-import Product from "../models/productModels.js";
-import wishlist from "../models/wishListModel.js";
+import Product from "../model/productModels.js";
+import wishlist from "../model/wishlistModel.js";
 import CustomError from "../utils/customError.js";
 
 export const addProductToWishlist = async (ProductId, userId) => {

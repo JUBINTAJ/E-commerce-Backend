@@ -1,8 +1,8 @@
-import asyncHandler from "../middlewares/asyncHandler";
-import Cart from "../model/cartModel";
-import { addProductToCart, getUserCart, removeProductFromCart } from "../service/cartService";
-import { STATUS } from "../utils/constant";
-import CustomError from "../utils/customError";
+import asyncHandler from "../middlewares/asyncHandler.js";
+import Cart from "../model/cartModel.js";
+import { addProductToCart, getUserCart, removeProductFromCart } from "../service/cartService.js";
+import { STATUS } from "../utils/constant.js";
+import CustomError from "../utils/customError.js";
 
 
 export const addCart=asyncHandler(async(req,res)=>{

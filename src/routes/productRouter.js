@@ -2,7 +2,7 @@ import { addProduct, deleteProduct, getAllProducts, singleProduct, updateProduct
 import authenticate from "../middlewares/authMiddleware.js"
 import isAdmin from "../middlewares/isAdminMiddleware.js"
 import { upload } from '../config/cloudinaryconfig.js'
-
+import express from "express"; 
 
 const productRouter=express.Router()
 

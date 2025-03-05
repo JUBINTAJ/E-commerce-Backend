@@ -1,6 +1,6 @@
-import asyncHandler from "../middlewares/asyncHandler";
+import asyncHandler from "../middlewares/asyncHandler.js";
 import { addProductToWishlist, getAllWishlistService, removeWishlistService } from "../service/wishlistService.js";
-import { STATUS } from "../utils/constant";
+import { STATUS } from "../utils/constant.js";
 
 
 

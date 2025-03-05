@@ -1,6 +1,6 @@
-import asyncHandler from "../middlewares/asyncHandler";
-import { addOrderService, showOrderService } from "../service/orderService";
-import { STATUS } from "../utils/constant";
+import asyncHandler from "../middlewares/asyncHandler.js";
+import { addOrderService, showOrderService } from "../service/orderService.js";
+import { STATUS } from "../utils/constant.js";
 
 export const  addOrder=asyncHandler(async(req,res)=>{
        const userId=req.user._id;

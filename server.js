@@ -17,7 +17,6 @@ const app=express()
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-app.use(errorHandler)
 
 
 app.use('/api/user',userRoutes)
@@ -38,15 +37,16 @@ async function main() {
 console.log(`connected to mongodb`)
 }
 
-
+ 
 app.get('/',(req,res)=>{
     res.send("llooii")
 })
 
+app.use(errorHandler)
 
 app.listen(port,()=>{
     console.log(`server running on http://localhost:${port}`)
 })
 
 
-
+     

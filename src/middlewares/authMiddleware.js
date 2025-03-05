@@ -1,6 +1,6 @@
-import CustomError from '../utils/customError'
-import User from '../model/userModels'
-import { verifyToken } from '../utils/jsonWebToken'
+import CustomError from '../utils/customError.js'
+import User from '../model/userModels.js'
+import { verifyToken } from '../utils/jsonWebToken.js'
 
 const authenticate=async(req,res,next)=>{
     try{

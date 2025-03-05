@@ -1,4 +1,4 @@
-import Product from "../models/productModels.js";
+import Product from "../model/productModels.js";
 import CustomError from "../utils/customError.js";
 
 

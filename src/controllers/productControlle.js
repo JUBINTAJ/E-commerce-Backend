@@ -1,7 +1,7 @@
-import asyncHandler from "../middlewares/asyncHandler";
-import { addProduction, deleteProductService, getAllProductService, getProductByIdService, updateProductService } from "../service/productService";
-import { STATUS } from "../utils/constant";
-import CustomError from "../utils/customError";
+import asyncHandler from "../middlewares/asyncHandler.js";
+import { addProduction, deleteProductService, getAllProductService, getProductByIdService, updateProductService } from "../service/productService.js";
+import { STATUS } from "../utils/constant.js";
+import CustomError from "../utils/customError.js";
 
 
 

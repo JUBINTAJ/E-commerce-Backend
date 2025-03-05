@@ -1,6 +1,6 @@
-import Cart from "../models/cartModel.js";
+import Cart from "../model/cartModel.js";
 import CustomError from "../utils/customError.js";
-import Product from "../models/productModels.js";
+import Product from "../model/productModels.js";
 
 
 
@@ -38,7 +38,7 @@ export const addProductToCart = async (productId, userId) => {
   }else {
      cart.products.push({ product: productId, quantity: 1 });
   }
-  
+
   await cart.save();
 };
 

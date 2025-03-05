@@ -1,12 +1,5 @@
 import asyncHandler from "../middlewares/asyncHandler.js";
-import {
-  getAllOrderService,
-  getAllUserServices,
-  getProfitService,
-  getTotalProductsPurchasedServices,
-  singleUserService,
-  userBlockService,
-} from "../service/adminService.js";
+import {getAllOrderService,getAllUserServices,getProfitService,getTotalProductsPurchasedServices,singleUserService, userBlockService,} from "../service/adminService.js";
 import { STATUS } from "../utils/constant.js";
 
 
