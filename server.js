@@ -4,6 +4,13 @@ import mongoose from 'mongoose';
 import errorHandler from './src/middlewares/errorHandler.js';
 import cors from 'cors';
 import userRoutes from './src/routes/userRoutes.js'
+import productRouter from './src/routes/productRouter.js';
+import cartRouter from './src/routes/cartRouter.js'
+import wishlistRouter from './src/routes/wishlistRouter.js'
+import orderRouter from './src/routes/cartRouter.js'
+import adminRouter  from './src/routes/adminRouter.js'
+
+
 dotenv.config()
 const app=express()
 
@@ -14,6 +21,11 @@ app.use(errorHandler)
 
 
 app.use('/api/user',userRoutes)
+app.use('/app/product',productRouter)
+app.use('/app/cart',cartRouter)
+app.use('/app/wishlist',wishlistRouter)
+app.use('/app/order',orderRouter)
+app.use('/app/admin',adminRouter)
 
 
 const DB_URL=process.env.DB_URL;
