@@ -7,8 +7,9 @@ import userRoutes from './src/routes/userRoutes.js'
 import productRouter from './src/routes/productRouter.js';
 import cartRouter from './src/routes/cartRouter.js'
 import wishlistRouter from './src/routes/wishlistRouter.js'
-import orderRouter from './src/routes/cartRouter.js'
+import orderRouter from './src/routes/orderRouter.js'
 import adminRouter  from './src/routes/adminRouter.js'
+import cookieParser from 'cookie-parser';
 
 
 dotenv.config()
@@ -17,14 +18,16 @@ const app=express()
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+app.use(cookieParser())
 
 
 app.use('/api/user',userRoutes)
-app.use('/app/product',productRouter)
-app.use('/app/cart',cartRouter)
-app.use('/app/wishlist',wishlistRouter)
-app.use('/app/order',orderRouter)
-app.use('/app/admin',adminRouter)
+app.use('/api/product',productRouter)
+app.use('/api/cart',cartRouter)
+app.use('/api/wishlist',wishlistRouter)
+app.use('/api/order',orderRouter)
+
+app.use('/api/admin',adminRouter)
 
 
 const DB_URL=process.env.DB_URL;

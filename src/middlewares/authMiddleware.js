@@ -8,7 +8,7 @@ const authenticate=async(req,res,next)=>{
         if(!token){
             throw new CustomError("Access token is missing",401)
         }
-        const decoded=verifyToken(token,process.env,Jwt_SECRET)
+        const decoded=verifyToken(token,process.env.JWT_SECRET)
         if(!decoded){
             throw new CustomError("invalid or expired acces token",403)
         }

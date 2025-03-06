@@ -2,6 +2,7 @@ import bcrypt from 'bcrypt'
 import User from '../model/userModels.js'
 import CustomError from '../utils/customError.js'
 
+
 export const userRegister=async(data)=>{
     const {username,email,password}=data
     const userExists=await User.findOne({email})
@@ -28,8 +29,12 @@ export const loginUser=async (email,password)=>{
     if(!isMatch){
         throw new CustomError("invalid password/email ",400)
     }
-    if(userData.isBlock){
+    if(userData.isBlocked){
         throw new CustomError("your account is blocked ",403)
     }
     return userData
 }
+
+
+
+

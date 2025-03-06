@@ -4,7 +4,7 @@ import CustomError from "../utils/customError.js";
 
 
 export const getAllProductService=async({category,page=1,limit=10,search})=>{ 
-       const query={isDelete:false}
+       const query={isDelete:"false"}
 
     if(category){ 
         query.category={$regex:`^${category}$`,$options:"i"} 
@@ -21,6 +21,7 @@ export const getAllProductService=async({category,page=1,limit=10,search})=>{
      const total=await Product.countDocuments(query)
 
      const products=await Product.find(query).skip(skip).limit(limit);
+     console.log(products,'loo')
 
 return{
     products,
@@ -33,7 +34,7 @@ return{
 }
 
 
-
+  
 
 export const getProductByIdService=async(id)=>{
     const productDetails=await Product.findById(id);

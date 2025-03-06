@@ -9,7 +9,7 @@ const productRouter=express.Router()
 
 
 
-productRouter.get('',getAllProducts)
+productRouter.get('/',getAllProducts)
 productRouter.get('/:id',singleProduct)
 
 

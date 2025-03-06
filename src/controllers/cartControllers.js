@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import asyncHandler from "../middlewares/asyncHandler.js";
 import Cart from "../model/cartModel.js";
 import { addProductToCart, getUserCart, removeProductFromCart } from "../service/cartService.js";

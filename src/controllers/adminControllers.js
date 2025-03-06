@@ -116,3 +116,5 @@ export const totalProductsPurchased = asyncHandler(async (req, res) => {
     total,
   });
 });
+
+
