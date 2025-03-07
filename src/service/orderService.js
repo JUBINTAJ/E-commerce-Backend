@@ -1,9 +1,9 @@
 import Cart from "../model/cartModel.js"
 import Order from "../model/orderModel.js"
-import product from  '../model/productModels.js'
+import ProductModel  from  '../model/productModels.js'
 import CustomError from "../utils/customError.js"
 
-export const addOrderService=async(name,HostAddress,payment,userId)=>{
+export const addOrderService=async(name,address,paymentMethod,userId)=>{
        const cart=await Cart.findOne({user:userId})
 
        if(!cart || cart.products.length===0){
@@ -16,16 +16,16 @@ export const addOrderService=async(name,HostAddress,payment,userId)=>{
        const order=new Order({
         user:userId,
         items:[],
-        data:new Data(),
+        data:new Date(),
         name,
-        address,
-        paymentMethode,
+        address ,
+        paymentMethod,
         total
        })
 
 
-       for (let item of cart.product){
-        const product=await product.findById(item.product)
+       for (let item of cart.products){
+        const product=await ProductModel .findById(item.product)
         if(!product){
             throw new CustomError(`insufficient quantity for ${product.name}`)
         }

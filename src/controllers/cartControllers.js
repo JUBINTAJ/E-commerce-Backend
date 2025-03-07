@@ -59,16 +59,10 @@ export const removeFromCart=asyncHandler(async(req,res,next)=>{
         throw new CustomError("product not found in the cart",404)
     }
 
+    cart.products.splice(productIndex, 1);
+    await cart.save();
 
-    const currentQuantity=cart.products[productIndex].quantity;
-     
-    if(currentQuantity>1){
-        cart.products[productIndex].quantity-=1;  
-        await cart.save()
-    }else{
-        cart.products.splice(productIndex,1) 
-        await cart.save()
-    }
+ 
     res.status(200).json({message:"product removed successfully",cart})
 
 })

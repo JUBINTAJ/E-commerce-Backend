@@ -4,8 +4,8 @@ import { STATUS } from "../utils/constant.js";
 
 export const  addOrder=asyncHandler(async(req,res)=>{
        const userId=req.user._id;
-       const {name,address,payment}=req.body
-       await addOrderService(name,address,payment,userId)
+       const {name,address,paymentMethod}=req.body
+       await addOrderService(name,address,paymentMethod,userId)
 
        res.status(200).json({
         status:STATUS.SUCCESS,
