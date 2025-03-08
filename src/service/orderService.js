@@ -2,8 +2,10 @@ import Cart from "../model/cartModel.js"
 import Order from "../model/orderModel.js"
 import ProductModel  from  '../model/productModels.js'
 import CustomError from "../utils/customError.js"
+import product from '../model/productModels.js'
+import mongoose from "mongoose";
 
-export const addOrderService=async(name,address,paymentMethod,userId)=>{
+export const addOrderService=async(name,paymentMethod,userId)=>{
        const cart=await Cart.findOne({user:userId})
 
        if(!cart || cart.products.length===0){
@@ -18,7 +20,6 @@ export const addOrderService=async(name,address,paymentMethod,userId)=>{
         items:[],
         data:new Date(),
         name,
-        address ,
         paymentMethod,
         total
        })
@@ -48,32 +49,34 @@ export const addOrderService=async(name,address,paymentMethod,userId)=>{
 
 
 
-
-export const showOrderService=async(userId,page=1,limit=10)=>{
-    if(!userId){
-        throw new CustomError("user ID is required to fetch orders")
+export const showOrderService = async (userId, page = 1, limit = 10) => {
+    if (!userId) {
+        throw new CustomError("User ID is required to fetch orders", 400);
     }
-     
-    const skip=(page-1)*limit;
-    const orders=await Order.find({user:userId})
-        .sort({date:-1})
+
+    const skip = (page - 1) * limit;
+
+    const orders = await Order.find({ user: userId })
+        .sort({ date: -1 })
         .skip(skip)
         .limit(limit)
         .populate({
-            path:"items.productId",
-            model:"product"
-        })
-        if(!orders.length){
-            throw new CustomError("no orders found",404)
-        }
-        const totalOrders=await Order.countDocuments({user:userId}) 
-        
+            path: "items.productId",
+            model: "product",
+        });
 
-        const pagination={
-            currentPage:page,
-            totalPages:Math.ceil(totalOrders/limit),
-            totalOrders
-        };
-    
-        return {orders,pagination}
-}    
+
+    if (!orders ) {
+        throw new CustomError("No orders found", 404);
+    }
+
+    const totalOrders = await Order.countDocuments({ user: userId });
+
+    const pagination = {
+        currentPage: page,
+        totalPages: Math.ceil(totalOrders / limit),
+        totalOrders,
+    };
+
+    return { orders, pagination };
+};

@@ -76,6 +76,7 @@ export const removeFromCart=asyncHandler(async(req,res,next)=>{
 export const incrementProductQuantity=asyncHandler(async(req,res)=>{
        const{productId}=req.params;
        const userId=req.user._id;
+       
         await addProductToCart(productId,userId)
          res.json({
              status:STATUS.SUCCESS,

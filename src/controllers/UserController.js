@@ -11,11 +11,11 @@ export const regiseterUser=asyncHandler(async(req,res)=>{
     res.status(201).json({
         status:STATUS.SUCCESS,
         message:`user registered successfully`,
-        user:{
-            id:createuser._id,
-            username:createuser.username,
-            email:createuser.email
-        }
+        // user:{
+        //     id:createuser._id,
+        //     username:createuser.username,
+        //     email:createuser.email
+        // }
     })
 })
 
@@ -39,7 +39,8 @@ export const userLogin=asyncHandler(async(req,res)=>{
             username:user.username,
             email:user.email,
             role:user.role
-        },accessToken,refreshToken
+        },accessToken,
+        // refreshToken
 
 
        })

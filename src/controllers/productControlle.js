@@ -55,11 +55,11 @@ export const singleProduct=asyncHandler(async(req,res)=>{
 export const addProduct=asyncHandler(async(req,res)=>{
        const{name,...rest}=req.body;
 
-       let url;
+       let img;
 
        if(req.file&&req.file.path){ 
    
-         url=req.file.path;    
+         img=req.file.path;    
     }else{
         return res.status(400).json({
             success:STATUS.ERROR,
@@ -67,7 +67,7 @@ export const addProduct=asyncHandler(async(req,res)=>{
         })
     }
 
-    const data=await addProduction({name,url,...rest})
+    const data=await addProduction({name,img,...rest})
 
     res.status(201).json({
         success:STATUS.SUCCESS,
@@ -90,6 +90,7 @@ export const updateProduct=asyncHandler(async(req,res)=>{
         status:STATUS.SUCCESS,
         message:'product updated successfully',
         updateProduct
+        
      })
 })
 

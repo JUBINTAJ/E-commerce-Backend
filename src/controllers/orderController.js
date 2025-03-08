@@ -4,12 +4,13 @@ import { STATUS } from "../utils/constant.js";
 
 export const  addOrder=asyncHandler(async(req,res)=>{
        const userId=req.user._id;
-       const {name,address,paymentMethod}=req.body
-       await addOrderService(name,address,paymentMethod,userId)
+       const {name,paymentMethod}=req.body
+       await addOrderService(name,paymentMethod,userId)
 
        res.status(200).json({
         status:STATUS.SUCCESS,
-        message:'order placed successs'
+        message:'order placed successs',
+       //  order
        })
 })
 
@@ -19,13 +20,13 @@ export const showOrder= asyncHandler(async(req,res)=>{
        const userId=req.user._id;
        const {page}=req.query;
 
-       const {order,pagination}=await showOrderService(userId,parseInt(page,10) || 1,10)
-       const message=order.length?"orders retrieved successfully " :"no order found"
+       const {orders,pagination}=await showOrderService(userId,parseInt(page,10) || 1,10)
+       const message=orders.length?"orders retrieved successfully " :"no order found"
 
        res.status(200).json({
         status:STATUS.SUCCESS,
         message,
-        order,
+        orders,
         pagination
        })
 })
