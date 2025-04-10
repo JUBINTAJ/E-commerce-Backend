@@ -1,5 +1,5 @@
 import asyncHandler from "../middlewares/asyncHandler.js";
-import {getAllOrderService,getAllUserServices,getProfitService,getTotalProductsPurchasedServices,singleUserService, userBlockService,} from "../service/adminService.js";
+import {getAllOrderService,getAllUserServices,getProfitService,getTotalProductsPurchasedServices,singleUserService, userBlockService,getMonthlySales} from "../service/adminService.js";
 import { STATUS } from "../utils/constant.js";
 
 
@@ -116,5 +116,23 @@ export const totalProductsPurchased = asyncHandler(async (req, res) => {
     total,
   });
 });
+
+
+
+export const monthlySales = async (req, res) => {
+  try {
+    const salesData = await getMonthlySales();
+    res.status(200).json({
+      success: true,
+      data: salesData,
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: 'Error fetching sales data',
+      err,
+    });
+  }
+};
 
 

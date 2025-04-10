@@ -21,6 +21,10 @@ const productSchema = new mongoose.Schema({
     stock: { type: Number,
      required:true
 },
+isDelete:{
+     type:Boolean,
+     default:false
+}
 }, { 
     timestamps: true 
    }); 

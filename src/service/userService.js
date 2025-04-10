@@ -1,6 +1,7 @@
 import bcrypt from 'bcrypt'
 import User from '../model/userModels.js'
 import CustomError from '../utils/customError.js'
+import { generateAccessToken, verifyToken } from '../utils/jsonWebToken.js'
 
 
 export const userRegister=async(data)=>{
@@ -36,5 +37,22 @@ export const loginUser=async (email,password)=>{
 }
 
 
+export const refreshAccessTokenService=async(refreshToken)=>{
+
+    if(!refreshToken){
+         throw new CustomError("Refresh token missing",401)
+    }
+    const decoded=verifyToken(refreshToken,process.env.JWT_REFRESH_SECRET)
+    
+    if(!decoded){
+        throw new CustomError("Invalid or expired refresh token", 403)
+    }
+    const user=await User.findById(decoded.id)
+    if(!user){
+        throw new CustomError("User not found",404)
+    }
+    const newAccessToken=generateAccessToken(user)
+    return {newAccessToken}
+  }
 
 

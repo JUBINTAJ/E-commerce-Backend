@@ -5,7 +5,9 @@ const wishlistSchema=new mongoose.Schema({
     user:{
         type:mongoose.Types.ObjectId,
         ref:'user',
-        required:true
+        required:true,
+        unique: true,
+
     },
     wishlist:[
         {

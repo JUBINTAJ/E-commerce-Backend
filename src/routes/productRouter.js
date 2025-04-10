@@ -16,7 +16,7 @@ productRouter.get('/:id',singleProduct)
 
 productRouter.post('/addproduct',authenticate,isAdmin,upload.single('image'),addProduct)
 productRouter.patch('/updateProduct',authenticate,isAdmin,upload.single('image'),updateProduct)
-productRouter.patch('/deleteProduct/:id',authenticate,isAdmin,deleteProduct)
+productRouter.delete('/deleteProduct/:id',authenticate,isAdmin,deleteProduct)
 
 
 

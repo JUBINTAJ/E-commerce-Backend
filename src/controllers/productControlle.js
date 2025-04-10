@@ -80,6 +80,7 @@ export const addProduct=asyncHandler(async(req,res)=>{
 
 
 export const updateProduct=asyncHandler(async(req,res)=>{
+    
        const{_id,...updateItems}=req.body
 
        if(!_id){
@@ -104,7 +105,7 @@ export const deleteProduct=asyncHandler(async(req,res)=>{
         throw new CustomError("product is not found",404)
     }
 
-      const deleteproduct=await deleteProductService(id)
+      const deleteProduct=await deleteProductService(id)
            res.json({
               status:STATUS.SUCCESS,
               message:"product deleted succesfully",

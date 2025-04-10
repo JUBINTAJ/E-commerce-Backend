@@ -1,6 +1,6 @@
 import express from 'express'
 import isAdmin from '../middlewares/isAdminMiddleware.js'
-import { allUser, orderDetails, Profit, singleUser, totalProductsPurchased, userBlock, userCount } from '../controllers/adminControllers.js'
+import { allUser, monthlySales, orderDetails, Profit, singleUser, totalProductsPurchased, userBlock, userCount } from '../controllers/adminControllers.js'
 import authenticate from '../middlewares/authMiddleware.js'
 import { adminLogin } from '../controllers/adminloginController.js'
 import { loginvalidation } from '../validation/userValidation.js'
@@ -21,9 +21,11 @@ router.get('/profit',authenticate,isAdmin,Profit)
 router.get('/totalpurchase',authenticate,isAdmin,totalProductsPurchased)
 router.get('/usersCount',authenticate,isAdmin,userCount)
 router.post('/login',validator.body(loginvalidation),adminLogin)
+router.get('/sales', monthlySales);
 
 
 
 
 
+ 
 export default router

@@ -5,6 +5,7 @@ import { verifyToken } from '../utils/jsonWebToken.js'
 const authenticate=async(req,res,next)=>{
     try{
         const token=req.cookies.accessToken
+        
         if(!token){
             throw new CustomError("Access token is missing",401)
         }

@@ -1,6 +1,7 @@
 import User from "../model/userModels.js";
 import CustomError from '../utils/customError.js'
 import Order from '../model/orderModel.js'
+import Sale from "../model/Salesgraph.js";
 
 
 
@@ -64,3 +65,21 @@ export const getTotalProductsPurchasedServices=async()=>{
 }
 
 
+export const getMonthlySales = async () => {
+    try {
+      const sales = await Sale.aggregate([
+        {
+          $group: {
+            _id: { $month: '$createdAt' },
+            totalSales: { $sum: '$amount' },
+          },
+        },
+        {
+          $sort: { _id: 1 },
+        },
+      ]);
+      return sales;
+    } catch (error) {
+      throw error;
+    }
+  };

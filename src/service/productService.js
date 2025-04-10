@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import Product from "../model/productModels.js";
 import CustomError from "../utils/customError.js";
 
@@ -19,9 +20,8 @@ export const getAllProductService=async({category,page=1,limit=10,search})=>{
 
      const skip=(page-1)*limit;
      const total=await Product.countDocuments(query)
-
+    
      const products=await Product.find(query).skip(skip).limit(limit);
-     console.log(products,'loo')
 
 return{
     products,
@@ -37,6 +37,9 @@ return{
   
 
 export const getProductByIdService=async(id)=>{
+    if(!mongoose.Types.ObjectId.isValid(id)){
+        throw new CustomError('invalid Id')
+    }
     const productDetails=await Product.findById(id);
     if(!productDetails){
         throw new CustomError('product not found',404)
@@ -69,9 +72,9 @@ export const updateProductService=async(_id,updateItems)=>{
     if(!existing){
         throw new CustomError('product is unavailable',400)
 
-        const data=await Product.findByIdAndUpdate({_id,isDelete:false},{$set:{...updateItems}},{new:true}) 
-        return data
     }
+    const data=await Product.findByIdAndUpdate({_id,isDelete:false},{$set:{...updateItems}},{new:true}) 
+    return data
     
 }
 
