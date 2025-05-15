@@ -17,7 +17,8 @@ const app=express()
 
 app.use(cors(
   {
-    origin:'http://localhost:5173',
+    origin:'baby-full.vercel.app',
+    // origin:'http://localhost:5173',
     credentials:true
   }
 ));
